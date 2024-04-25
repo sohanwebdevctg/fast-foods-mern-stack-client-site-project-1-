@@ -47,7 +47,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="md:container md:mx-auto md:px-14">
+    <div className="display">
       {/* navbar section start */}
       <div className="navbar ">
         <div className="navbar-start">
