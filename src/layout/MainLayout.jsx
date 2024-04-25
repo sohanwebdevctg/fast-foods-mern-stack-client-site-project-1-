@@ -6,12 +6,14 @@ const MainLayout = () => {
   
   return (
 
-    <div>
+    <div className="bg-zinc-100">
       {/* navbar section start */}
       <Navbar></Navbar>
       {/* navbar section end */}
       {/* mainLayout section start */}
-      <Outlet></Outlet>
+      <div className="h-screen">
+        <Outlet></Outlet>
+      </div>
       {/* mainLayout section end */}
       {/* footer section start */}
       <footer>this is footer</footer>
