@@ -47,9 +47,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="">
+    <div className="md:container md:mx-auto md:px-14">
       {/* navbar section start */}
-      <div className="navbar lg:px-20">
+      <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -90,7 +90,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex items-center gap-2">
           {/* search start */}
-          <button className="btn btn-ghost btn-circle">
+          <button className="btn btn-ghost btn-circle hidden md:flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -108,7 +108,7 @@ const Navbar = () => {
           </button>
           {/* search end */}
           {/* cart start */}
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle hidden  md:flex items-center">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@ const Navbar = () => {
           {/* contact button start */}
           <Link
             to="/"
-            className="btn bg-orange-600 px-6 py-2 rounded-full text-white font-bold flex items-center gap-2 text-sm hover:bg-black duration-500 hover:shadow-lg hover:shadow-orange-200"
+            className=" bg-orange-600 px-2 py-2 sm:px-3 sm:py-2 md:px-6 md:py-3 rounded-full text-white font-bold flex items-center gap-2 text-xs sm:text-base md:text-sm hover:bg-black duration-500 hover:shadow-lg hover:shadow-orange-200"
           >
             <FiPhoneCall /> Contact
           </Link>
