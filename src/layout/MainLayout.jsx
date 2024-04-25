@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 
 const MainLayout = () => {
@@ -7,7 +8,7 @@ const MainLayout = () => {
 
     <div>
       {/* navbar section start */}
-      <nav>this is nav bar</nav>
+      <Navbar></Navbar>
       {/* navbar section end */}
       {/* mainLayout section start */}
       <Outlet></Outlet>
