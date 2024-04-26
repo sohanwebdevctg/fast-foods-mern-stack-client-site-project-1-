@@ -12,7 +12,7 @@ const categoriesItem = [
 const Categories = () => {
 
   return (
-    <div className='py-'>
+    <div className='py-10'>
       {/* categories section start */}
       <div className="display">
         {/* content section start */}

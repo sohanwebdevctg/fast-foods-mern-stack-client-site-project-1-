@@ -1,5 +1,6 @@
 import Banner from "../../components/Banner";
 import Categories from "./Categories";
+import DeliciousFood from "./DeliciousFood";
 
 
 const Home = () => {
@@ -11,6 +12,9 @@ const Home = () => {
       {/* categories section start */}
       <Categories></Categories>
       {/* categories section end */}
+      {/* delicious section start */}
+      <DeliciousFood></DeliciousFood>
+      {/* delicious section end */}
     </div>
   );
 };
