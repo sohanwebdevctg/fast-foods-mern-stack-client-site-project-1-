@@ -5,20 +5,20 @@ import pizza from '../../public/pizza/pizza1.png'
 
 const Banner = () => {
   return (
-    <div className='display'>
+    <div className='display bg-red-300'>
       {/* banner content section start */}
-      <div className='flex flex-col md:flex-row-reverse items-center justify-between gap-5 md:py-10'>
+      <div className='flex flex-col md:flex-row-reverse items-center justify-between gap-5 py-5 md:py-10'>
         {/* banner image start */}
         <div className='md:w-1/2 h-full'>
           {/* image start */}
-          <div className=''>
+          <div className='animationImg'>
             <img src={pizza} className='w-full h-full'></img>
           </div>
           {/* image end */}
         </div>
         {/* banner image end */}
         {/* banner text start */}
-        <div className='md:w-1/2 h-full'>
+        <div className='md:w-1/2 h-full px-5'>
           {/* title start */}
           <h3 className='lg:text-6xl font-bold'><span className='text-orange-600'>Meat, Eat & Enjoy</span><br></br><span>the true taste</span></h3>
           {/* title end */}
