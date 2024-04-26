@@ -16,9 +16,15 @@ const Banner = () => {
           {/* image start */}
           <div className='animationImg relative'>
             <img src={pizza} className='w-full h-full'></img>
+            {/* icon1 start */}
             <img src={icon1} className='w-14 h-12 absolute -bottom-2 left-2 sm:bottom-5 sm:left-8 md:bottom-5 md:left-0 lg:bottom-5 lg:left-0 xl:bottom-16 xl:left-7'></img>
+            {/* icon1 end */}
+            {/* icon2 start */}
             <img src={icon2} className='w-14 h-12 absolute -bottom-11 left-32 sm:-bottom-9 sm:left-32 md:-bottom-10 md:left-20 lg:-bottom-10 lg:left-20 xl:-bottom-2 xl:left-18'></img>
+            {/* icon2 end */}
+            {/* icon3 start */}
             <img src={icon3} className='w-14 h-12 absolute -bottom-5 left-60 sm:-bottom-12 sm:left-60 md:-bottom-9 md:left-52 lg:-bottom-14 lg:left-52 xl:-bottom-10 xl:left-44 '></img>
+            {/* icon3 end */}
           </div>
           {/* image end */}
         </div>
