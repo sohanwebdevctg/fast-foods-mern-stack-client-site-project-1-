@@ -74,12 +74,9 @@ const DeliciousFood = () => {
           {/* food section start */}
           <div className="mt-5">
             <Slider {...settings} className="overflow-hidden">
-              <FoodCard></FoodCard>
-              <FoodCard></FoodCard>
-              <FoodCard></FoodCard>
-              <FoodCard></FoodCard>
-              <FoodCard></FoodCard>
-              <FoodCard></FoodCard>
+              {
+                foods.map((data, index) => <FoodCard key={index} data={data}></FoodCard>)
+              }
             </Slider>
           </div>
           {/* food section end */}
