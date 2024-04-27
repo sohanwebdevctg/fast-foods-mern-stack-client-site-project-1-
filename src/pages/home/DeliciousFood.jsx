@@ -18,6 +18,7 @@ const DeliciousFood = () => {
       });
   }, []);
 
+  // slider responsive
   const settings = {
     dots: true,
     infinite: false,
