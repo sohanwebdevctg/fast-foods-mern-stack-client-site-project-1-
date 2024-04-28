@@ -7,10 +7,10 @@ import { IoFastFoodSharp } from "react-icons/io5";
 
 // ourServicesItem
 const ourServicesItem = [
-  {id: 1, name: 'Online Order', icon: <FaShoppingCart/>, des: 'this is food' },
-  {id: 2, name: 'Gift Cards', icon: <FaGift/>, des: 'this is food'},
-  {id: 3, name: 'Fast Delivery', icon: <TbTruckDelivery/> , des: 'this is food'},
-  {id: 4, name: 'Catering', icon: <IoFastFoodSharp/>, des: 'this is food' },
+  {id: 1, name: 'Online Order', icon: <FaShoppingCart/>, des: 'Order food from restaurants or groceries' },
+  {id: 2, name: 'Gift Cards', icon: <FaGift/>, des: 'Send Gift Cards by email, print-at-home, or mail'},
+  {id: 3, name: 'Fast Delivery', icon: <TbTruckDelivery/> , des: 'We are always ready 24/7 to help our Customers'},
+  {id: 4, name: 'Catering', icon: <IoFastFoodSharp/>, des: 'Eat green vegetables at least three to four times a week' },
 ]
 
 
@@ -41,18 +41,18 @@ const OurServices = () => {
       </div>
       {/* ourServices text end */}
       {/* ourServices card start */}
-      <div className='md:w-1/2 h-full grid grid-cols-2 gap-5'>
+      <div className='md:w-1/2 h-full grid grid-cols-2 gap-2 sm:gap-4 md:gap-2 lg:gap-3 xl:gap-5 px-2'>
         {/* cardContent start */}
         {
-          ourServicesItem.map((item, index) => <div key={index} className="flex flex-col items-center bg-zinc-100 shadow-lg shadow-zinc-300 p-5 rounded-md space-y-2 hover:border-[1px] hover:border-orange-600 duration-300 h-auto w-auto">
+          ourServicesItem.map((item, index) => <div key={index} className="flex flex-col items-center bg-zinc-100 shadow-lg shadow-zinc-300 p-2 sm:p-3 md:gap-2 lg:p-3 xl:p-5 rounded-md space-y-2 md:space-y-1 lg:space-y-2 hover:border-[1px] hover:border-orange-600 duration-300 h-auto w-auto overflow-hidden">
             {/* icon start */}
-            <p className="text-4xl text-orange-600">{item.icon}</p>
+            <p className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl text-orange-600">{item.icon}</p>
             {/* icon end */}
             {/* name start */}
-            <h4 className="text-lg font-bold">{item.name}</h4>
+            <h4 className="text-sm sm:text-base md:text-sm lg:text-base xl:text-lg font-bold">{item.name}</h4>
             {/* name end */}
             {/* description start */}
-            <p className="text-lg italic">{item.des}</p>
+            <p className="text-xs sm:text-sm md:text-xs lg:text-base xl:text-lg italic text-center">{item.des}</p>
             {/* description end */}
           </div>)
         }
