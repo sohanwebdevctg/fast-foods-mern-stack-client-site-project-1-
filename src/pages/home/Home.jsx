@@ -2,6 +2,7 @@ import Banner from "../../components/Banner";
 import Categories from "./Categories";
 import DeliciousFood from "./DeliciousFood";
 import OurCustomers from "./OurCustomers";
+import PopularDishes from "./PopularDishes";
 
 
 const Home = () => {
@@ -19,6 +20,9 @@ const Home = () => {
       {/* ourCustomers section start */}
       <OurCustomers></OurCustomers>
       {/* ourCustomers section end */}
+      {/* popularDishes section start */}
+      <PopularDishes></PopularDishes>
+      {/* popularDishes section end */}
     </div>
   );
 };
