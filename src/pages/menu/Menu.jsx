@@ -7,6 +7,7 @@ const Menu = () => {
 
   //menu data
   const [menu, setMenu] = useState([]);
+  const [filter, setFilter] = useState([])
 
   //loading menu data
   useEffect(() => {
@@ -22,6 +23,8 @@ const Menu = () => {
     loadingFun();
   },[])
 
+  
+
   return (
     <div className="display">
       {/* menuBanner section start */}
@@ -31,7 +34,10 @@ const Menu = () => {
       {/* menu data section start */}
       {/* button start */}
       <div className="flex gap-2">
-        
+        <button onClick={() => setFilter([])}>All</button>
+        <button onClick={() => setFilter([])}>All</button>
+        <button onClick={() => setFilter([])}>All</button>
+        <button onClick={() => setFilter([])}>All</button>
       </div>
       {/* button end */}
       {/* menu content start */}
