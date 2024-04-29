@@ -78,8 +78,10 @@ const Menu = () => {
       {/* menuBanner section end */}
 
       {/* menu data section start */}
+      {/* button and sorting data start */}
+      <div className="flex flex-col md:flex-row justify-between items-center px-2">
       {/* button start */}
-      <div className="flex gap-2 my-4 overflow-x-scroll items-center px-2">
+      <div className="flex gap-2 my-4 overflow-x-scroll items-center">
         {/* all data btn start */}
         <button
           className="bg-orange-600 text-white p-2 rounded-lg uppercase text-sm"
@@ -104,13 +106,16 @@ const Menu = () => {
       </div>
       {/* button end */}
       {/* sorting data start */}
-      <select onClick={sortFun} className="select select-bordered select-sm w-full max-w-xs">
+      <select onClick={sortFun} className="select select-bordered select-sm w-full md:w-36">
+        <option disabled >All Data</option>
         <option value="a-z" >A-Z</option>
         <option value="z-a">Z-A</option>
         <option value="high-to-low">High-to-Log</option>
         <option value="low-to-high">Low-to-High</option>
       </select>
       {/* sorting data end */}
+      </div>
+      {/* button and sorting data end */}
       {/* menu content start */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {(filter.length > 0 ? filter : menu).map((data, index) => (
