@@ -23,7 +23,13 @@ const Menu = () => {
     loadingFun();
   },[])
 
-  
+  // filter function button
+  const filterData = (value) => {
+    const filterBtn = menu.filter((item, index) => item.category === value)
+    setFilter(filterBtn)
+  }
+
+  console.log(filter)
 
   return (
     <div className="display">
@@ -34,16 +40,20 @@ const Menu = () => {
       {/* menu data section start */}
       {/* button start */}
       <div className="flex gap-2">
-        <button onClick={() => setFilter([])}>All</button>
-        <button onClick={() => setFilter([])}>All</button>
-        <button onClick={() => setFilter([])}>All</button>
-        <button onClick={() => setFilter([])}>All</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => setFilter([])}>All</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('salad')}>Salad</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('drinks')}>Drinks</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('popular')}>Popular</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('dessert')}>Dessert</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('pizza')}>Pizza</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('soup')}>Soup</button>
+        <button className="bg-orange-600 text-white p-2 rounded-lg" onClick={() => filterData('offered')}>Offered</button>
       </div>
       {/* button end */}
       {/* menu content start */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {
-          menu.map((data, index) => <FoodCard key={index} data={data}></FoodCard>)
+          (filter.length > 0 ? filter : menu).map((data, index) => <FoodCard key={index} data={data}></FoodCard>)
         }
         {/* menu content end */}
       </div>
