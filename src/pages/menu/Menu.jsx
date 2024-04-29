@@ -46,6 +46,31 @@ const Menu = () => {
     setButtonData([...uniqueElements]);
   }, [menu]);
 
+  //sorting function data
+  const sortFun = (event) => {
+    const value = event.target.value;
+
+    let sortedData = [...filter];
+    
+    switch (value) {
+      case "a-z":
+          sortedData.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+      case "z-a":
+          sortedData.sort((a, b) => b.name.localeCompare(a.name));
+          break;
+      case "high-to-low":
+          sortedData.sort((a, b) => b.price - a.price);
+          break;
+      case "low-to-high":
+          sortedData.sort((a, b) => a.price - b.price);
+          break;
+      default:
+          break;
+  }
+  setFilter(sortedData); 
+  }
+
   return (
     <div className="display">
       {/* menuBanner section start */}
@@ -78,6 +103,14 @@ const Menu = () => {
         {/* dynamic data btn end */}
       </div>
       {/* button end */}
+      {/* sorting data start */}
+      <select onClick={sortFun} className="select select-bordered select-sm w-full max-w-xs">
+        <option value="a-z" >A-Z</option>
+        <option value="z-a">Z-A</option>
+        <option value="high-to-low">High-to-Log</option>
+        <option value="low-to-high">Low-to-High</option>
+      </select>
+      {/* sorting data end */}
       {/* menu content start */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {(filter.length > 0 ? filter : menu).map((data, index) => (
