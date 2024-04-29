@@ -6,7 +6,7 @@ const FoodCard = ({data}) => {
   console.log(data)
 
   return (
-    <div className="m-2 md:m-1 lg:m-2 shadow-lg rounded-lg">
+    <div className="m-2 md:m-1 lg:m-2 shadow-lg rounded-lg flex flex-col items-center justify-center">
       {/* card section start */}
       <div className="card w-[100%] glass ">
         {/* image start */}
