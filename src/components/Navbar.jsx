@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../public/logo/logo.png";
-import { FiPhoneCall } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -161,10 +161,10 @@ const Navbar = () => {
             {/* cart end */}
             {/* contact button start */}
             <Link
-              to="/"
+              to="/login"
               className=" bg-orange-600 px-2 py-2 sm:px-3 sm:py-2 md:px-6 md:py-3 rounded-full text-white font-bold flex items-center gap-2 text-xs sm:text-base md:text-sm hover:bg-black duration-500 hover:shadow-lg hover:shadow-orange-200"
             >
-              <FiPhoneCall /> Contact
+              <FaUser /> LogIn
             </Link>
             {/* contact button end */}
           </div>
