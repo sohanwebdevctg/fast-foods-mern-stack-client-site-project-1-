@@ -12,7 +12,7 @@ const MainLayout = () => {
       <Navbar></Navbar>
       {/* navbar section end */}
       {/* mainLayout section start */}
-      <div className="md:min-h-[700px] ">
+      <div className="md:min-h-[700px] pt-16 ">
         <Outlet></Outlet>
       </div>
       {/* mainLayout section end */}

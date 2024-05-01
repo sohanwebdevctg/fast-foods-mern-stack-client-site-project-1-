@@ -69,7 +69,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className={`${isScroll ? 'fixed top-0 right-0 left-0 w-full transition-all ease-in duration-300 z-50 shadow-md bg-slate-100': ' transition-all ease-in duration-500 static z-50'}`}>
+    <header className={`${isScroll ? 'fixed top-0 right-0 left-0 w-full transition-all ease-in duration-300 z-50 shadow-md bg-slate-100': ' transition-all ease-in duration-500 fixed w-full left-0 right-0 top-0 bg-slate-100 z-50'}`}>
       <div className="display">
         {/* navbar section start */}
         <div className="navbar ">
@@ -97,7 +97,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 z-50"
+                className="menu menu-sm dropdown-content mt-3 z-30 p-2 shadow bg-base-100 rounded-box w-52 "
               >
                 {/* mobile menu start */}
                 {navItems}
