@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import signup from "../../public/signup/signup.png";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 const SignUp = () => {
   return (
@@ -9,7 +10,14 @@ const SignUp = () => {
       <div className="display flex flex-col md:flex-row justify-center items-center h-screen w-full p-3 md:p-10">
         {/* content section start */}
         <div className="w-full sm:w-3/5 md:w-5/6 lg:w-4/5 ">
-          <div className="card lg:card-side shadow-xl bg-zinc-100">
+          <div className="card lg:card-side shadow-xl bg-zinc-100 relative">
+            {/* back button start */}
+            <Link to="/" className="absolute top-5 right-5">
+              <button className="w-8 h-8 rounded-full border-[1px] border-orange-600 hover:bg-orange-600 text-orange-600 hover:text-white">
+                <RxCross2 className="mx-auto items-center" />
+              </button>
+            </Link>
+            {/* back button end */}
             <div className="flex justify-between items-center rounded-3xl">
               {/* image section start */}
               <div className="md:w-1/2 hidden md:block h-full">
