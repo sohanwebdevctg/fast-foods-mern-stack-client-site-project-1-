@@ -4,6 +4,8 @@ import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
 const SignUp = () => {
+
+  
   return (
     <div className="bg-zinc-100">
       {/* signup section start */}
