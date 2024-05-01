@@ -1,23 +1,32 @@
+import { Link } from "react-router-dom";
 import login from "../../public/login/logIn.png";
+import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
   return (
-    <div className="">
+    <div className="bg-zinc-100">
       {/* Login section start */}
       <div className="display flex flex-col md:flex-row justify-center items-center h-screen w-full p-3 md:p-10">
         {/* content section start */}
-        <div className="w-full sm:w-3/5 md:w-5/6 lg:w-4/5">
-          <div className="card lg:card-side shadow-xl">
+        <div className="w-full sm:w-3/5 md:w-5/6 lg:w-4/5 ">
+          <div className="card lg:card-side shadow-xl bg-zinc-100">
             <div className="flex justify-between items-center rounded-3xl">
               {/* image section start */}
               <div className="md:w-1/2 hidden md:block">
-                <img src={login} alt="Album" className="w-full h-full rounded-3xl" />
+                <img
+                  src={login}
+                  alt="Album"
+                  className="w-full h-full rounded-s-3xl"
+                />
               </div>
               {/* image section end */}
               {/* form section start */}
               <div className="w-full md:w-1/2 card-body">
-                <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">LogIn Form</h1>
-                <form >
+                <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">
+                  LogIn Form
+                </h1>
+                <form>
+                  {/* email section start */}
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Email</span>
@@ -28,6 +37,8 @@ const LogIn = () => {
                       className="input input-bordered"
                     />
                   </div>
+                  {/* email section end */}
+                  {/* password section start */}
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Password</span>
@@ -38,10 +49,53 @@ const LogIn = () => {
                       className="input input-bordered"
                     />
                   </div>
-                  <div className="form-control mt-6">
-                    <button className="btn bg-orange-600 text-white hover:bg-black shadow-xl">Login</button>
+                  {/* password section end */}
+                  {/* signup link btn start */}
+                  <label className="label text-sm sm:text-base md:text-xs lg:text-sm xl:text-base">
+                    <p>
+                      Don't have an account{" "}
+                      <Link
+                        to="/signup"
+                        className="link link-hover text-orange-600"
+                      >
+                        SignUp Now
+                      </Link>
+                    </p>
+                  </label>
+                  {/* signup link btn end */}
+                  {/* submit btn start */}
+                  <div className="form-control mt-4">
+                    <button className="btn bg-orange-600 text-white hover:bg-black shadow-xl">
+                      Login
+                    </button>
                   </div>
+                  {/* submit btn end */}
                 </form>
+                {/* social media section start */}
+                <ul className="flex justify-center items-center gap-3">
+                  <li>
+                    <Link to="/">
+                      <button className="btn btn-circle border-[1px] border-orange-600 hover:bg-orange-600 text-orange-600 hover:text-white">
+                      <FaGoogle />
+                      </button>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      <button className="btn btn-circle border-[1px] border-orange-600 hover:bg-orange-600 text-orange-600 hover:text-white">
+                      <FaFacebookF />
+                      </button>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      <button className="btn btn-circle border-[1px] border-orange-600 hover:bg-orange-600 text-orange-600 hover:text-white">
+                      <FaGithub />
+                      </button>
+                    </Link>
+                  </li>
+                </ul>
+                {/* social media section end */}
               </div>
               {/* form section end */}
             </div>
