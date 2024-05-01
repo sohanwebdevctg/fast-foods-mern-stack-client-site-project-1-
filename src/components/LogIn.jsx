@@ -45,7 +45,7 @@ const LogIn = () => {
                   {/* email section start */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Email</span>
+                    {errors.email ? <span className="text-sm text-red-600">please provide correct email</span> : <span className="label-text">Email</span>}
                     </label>
                     <input
                       type="email"
@@ -53,13 +53,12 @@ const LogIn = () => {
                       className="input input-bordered"
                       {...register("email", { required: true })}
                     />
-                    {errors.email && <span className="text-sm text-red-600">please provide correct email</span>}
                   </div>
                   {/* email section end */}
                   {/* password section start */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                    {errors.password ? <span className="text-sm text-red-600">please provide correct password</span> : <span className="label-text">Password</span>}
                     </label>
                     <input
                       type="password"
@@ -67,7 +66,6 @@ const LogIn = () => {
                       className="input input-bordered"
                       {...register("password", { required: true })}
                     />
-                    {errors.password && <span className="text-sm text-red-600">please provide correct password</span>}
                   </div>
                   {/* password section end */}
                   {/* signup link btn start */}

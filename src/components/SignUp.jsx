@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import signup from "../../public/signup/signup.png";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
 
-  
+  //react hook form
+  const {register,handleSubmit,formState: { errors }} = useForm()
+
+  const onSubmit = (data) => {console.log(data)}
+
   return (
     <div className="bg-zinc-100">
       {/* signup section start */}
@@ -35,40 +40,44 @@ const SignUp = () => {
                 <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">
                   SignUp Form
                 </h1>
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   {/* name section start */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Name</span>
+                    {errors.name ? <span className="text-sm text-red-600">please provide correct name</span> : <span className="label-text">Name</span>}
                     </label>
                     <input
                       type="text"
                       placeholder="Enter your name"
                       className="input input-bordered"
+                      {...register("name", { required: true })}
                     />
+                    
                   </div>
                   {/* name section end */}
                   {/* email section start */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Email</span>
+                    {errors.email ? <span className="text-sm text-red-600">please provide correct email</span> : <span className="label-text">Email</span>}
                     </label>
                     <input
                       type="email"
                       placeholder="Enter your email"
                       className="input input-bordered"
+                      {...register("email", { required: true })}
                     />
                   </div>
                   {/* email section end */}
                   {/* password section start */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                    {errors.password ? <span className="text-sm text-red-600">please provide correct password</span> : <span className="label-text">Password</span>}
                     </label>
                     <input
                       type="password"
                       placeholder="Enter your password"
                       className="input input-bordered"
+                      {...register("password", { required: true })}
                     />
                   </div>
                   {/* password section end */}
