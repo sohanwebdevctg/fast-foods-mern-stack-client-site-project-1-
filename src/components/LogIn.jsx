@@ -12,7 +12,7 @@ const LogIn = () => {
           <div className="card lg:card-side shadow-xl bg-zinc-100">
             <div className="flex justify-between items-center rounded-3xl">
               {/* image section start */}
-              <div className="md:w-1/2 hidden md:block">
+              <div className="md:w-1/2 hidden md:block h-full">
                 <img
                   src={login}
                   alt="Album"
@@ -33,7 +33,7 @@ const LogIn = () => {
                     </label>
                     <input
                       type="email"
-                      placeholder="email"
+                      placeholder="Enter your email"
                       className="input input-bordered"
                     />
                   </div>
@@ -45,7 +45,7 @@ const LogIn = () => {
                     </label>
                     <input
                       type="password"
-                      placeholder="password"
+                      placeholder="Enter your password"
                       className="input input-bordered"
                     />
                   </div>
@@ -53,7 +53,7 @@ const LogIn = () => {
                   {/* signup link btn start */}
                   <label className="label text-sm sm:text-base md:text-xs lg:text-sm xl:text-base">
                     <p>
-                      Don't have an account{" "}
+                      Don't have an account?{" "}
                       <Link
                         to="/signup"
                         className="link link-hover text-orange-600"
