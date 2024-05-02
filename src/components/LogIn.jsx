@@ -4,8 +4,13 @@ import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { useForm } from "react-hook-form";
 import Google from "./Google";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
 
 const LogIn = () => {
+
+  //authProvider
+  const { logIn } = useContext(AuthContext);
 
   //react hook form
   const {register,handleSubmit,formState: { errors }} = useForm()

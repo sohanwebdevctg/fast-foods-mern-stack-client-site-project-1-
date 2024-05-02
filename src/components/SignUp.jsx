@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signup from "../../public/signup/signup.png";
 import { FaFacebookF, FaGithub, } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
@@ -9,12 +9,39 @@ import Google from "./Google";
 
 const SignUp = () => {
 
-  
+  //authProvider
+  const { signUp } = useContext(AuthContext);
 
   //react hook form
   const {register,handleSubmit,formState: { errors }} = useForm()
 
-  const onSubmit = (data) => {console.log(data)}
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+
+
+  const onSubmit = (data) => {
+    // user dat
+    const email = data.email;
+    const password = data.password;
+
+    signUp(email, password)
+    .then((result) => {
+      const user = result.user;
+      if(user){
+        alert('success signUp')
+        navigate(from, { replace: true });
+      }
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      if(errorMessage){
+        alert(errorMessage)
+      }
+    });
+
+  }
 
   
 
