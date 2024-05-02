@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
 import signup from "../../public/signup/signup.png";
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebookF, FaGithub, } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
+import Google from "./Google";
 
 const SignUp = () => {
+
+  
 
   //react hook form
   const {register,handleSubmit,formState: { errors }} = useForm()
 
   const onSubmit = (data) => {console.log(data)}
+
+  
+
 
   return (
     <div className="bg-zinc-100">
@@ -105,11 +113,7 @@ const SignUp = () => {
                 {/* social media section start */}
                 <ul className="flex justify-center items-center gap-3">
                   <li>
-                    <Link to="/">
-                      <button className="w-8 h-8 rounded-full border-[1px] border-orange-600 hover:bg-orange-600 text-orange-600 hover:text-white">
-                      <FaGoogle className="mx-auto items-center" />
-                      </button>
-                    </Link>
+                    <Google></Google>
                   </li>
                   <li>
                     <Link to="/">
