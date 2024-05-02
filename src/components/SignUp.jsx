@@ -22,7 +22,7 @@ const SignUp = () => {
 
 
   const onSubmit = (data) => {
-    // user dat
+    // user data
     const email = data.email;
     const password = data.password;
 
