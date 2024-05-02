@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../../public/logo/logo.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
+import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
 
   // scrolling state
   const [isScroll, setIsScroll] = useState(false);
+
+  //user info
+  const {user} = useContext(AuthContext)
+  console.log(user)
 
   //scrolling functionality
   useEffect(() => {
