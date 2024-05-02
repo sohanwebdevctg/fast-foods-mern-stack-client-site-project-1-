@@ -3,6 +3,7 @@ import logo from "../../public/logo/logo.png";
 import { useContext, useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../context/AuthProvider";
+import Profile from "./Profile";
 
 const Navbar = () => {
 
@@ -165,12 +166,14 @@ const Navbar = () => {
             </div>
             {/* cart end */}
             {/* contact button start */}
-            <Link
+            {
+              user && user ? <Profile user={user}></Profile> : <Link
               to="/login"
               className=" bg-orange-600 px-2 py-2 sm:px-3 sm:py-2 md:px-6 md:py-3 rounded-full text-white font-bold flex items-center gap-2 text-xs sm:text-base md:text-sm hover:bg-black duration-500 hover:shadow-lg hover:shadow-orange-200"
             >
               <FaUser /> LogIn
             </Link>
+            }
             {/* contact button end */}
           </div>
         </div>
