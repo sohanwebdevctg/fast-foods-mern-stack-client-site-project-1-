@@ -7,6 +7,7 @@ import Home from "../pages/home/Home";
 import Menu from "../pages/menu/Menu";
 import LogIn from "../components/LogIn";
 import SignUp from "../components/SignUp";
+import UpdateProfile from "../components/UpdateProfile";
 
 
 //router
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: '/menu',
         element: <Menu></Menu>
+      },
+      {
+        path: '/updateProfile',
+        element: <UpdateProfile></UpdateProfile>
       },
     ]
   },
