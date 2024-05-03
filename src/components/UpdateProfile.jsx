@@ -19,22 +19,19 @@ const UpdateProfile = () => {
   const onSubmit = (data) => {
     // user data
     const name = data.name;
-    const photoURL = data.photoURL;
+    const photo = data.photo;
 
-    updateUserProfile(name, photoURL)
-    .then((result) => {
-      const user = result.user;
-      if(user){
-        alert('success signUp')
-        navigate(from, { replace: true });
-      }
-    })
-    .catch((error) => {
+    console.log(name, photo)
+
+    updateUserProfile(name, photo)
+    .then(() => {
+      alert('successfully')
+      navigate(from, {replace: true})
+    }).catch((error) => {
       const errorMessage = error.message;
-      if(errorMessage){
-        alert(errorMessage)
-      }
+      alert(errorMessage)
     });
+
   }
 
 
@@ -56,39 +53,39 @@ const UpdateProfile = () => {
               {/* form section start */}
               <div className="card-body">
                 <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">
-                  LogIn Form
+                  Update Profile
                 </h1>
                 <form  onSubmit={handleSubmit(onSubmit)}>
                   {/* email section start */}
                   <div className="form-control">
                     <label className="label">
-                    {errors.email ? <span className="text-sm text-red-600">please provide correct email</span> : <span className="label-text">Email</span>}
+                    {errors.name ? <span className="text-sm text-red-600">please provide correct Name</span> : <span className="label-text">Name</span>}
                     </label>
                     <input
-                      type="email"
-                      placeholder="Enter your email"
+                      type="text"
+                      placeholder="Enter your name"
                       className="input input-bordered"
-                      {...register("email", { required: true })}
+                      {...register("name", { required: true })}
                     />
                   </div>
                   {/* email section end */}
                   {/* password section start */}
                   <div className="form-control">
                     <label className="label">
-                    {errors.password ? <span className="text-sm text-red-600">please provide correct password</span> : <span className="label-text">Password</span>}
+                    {errors.photo ? <span className="text-sm text-red-600">please provide correct image link</span> : <span className="label-text">Photo</span>}
                     </label>
                     <input
-                      type="password"
-                      placeholder="Enter your password"
+                      type="text"
+                      placeholder="Enter your photo url"
                       className="input input-bordered"
-                      {...register("password", { required: true })}
+                      {...register("photo", { required: true })}
                     />
                   </div>
                   {/* password section end */}
                   {/* submit btn start */}
                   <div className="form-control mt-4">
                     <button type="submit" className="btn bg-orange-600 text-white hover:bg-black shadow-xl">
-                      Login
+                      update
                     </button>
                   </div>
                   {/* submit btn end */}
