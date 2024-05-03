@@ -12,7 +12,6 @@ const Navbar = () => {
 
   //user info
   const {user} = useContext(AuthContext)
-  console.log(user)
 
   //scrolling functionality
   useEffect(() => {

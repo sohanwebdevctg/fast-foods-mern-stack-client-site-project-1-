@@ -21,8 +21,7 @@ const UpdateProfile = () => {
     const name = data.name;
     const photo = data.photo;
 
-    console.log(name, photo)
-
+    //update user profile
     updateUserProfile(name, photo)
     .then(() => {
       alert('successfully')
@@ -40,7 +39,7 @@ const UpdateProfile = () => {
       {/* Login section start */}
       <div className="display flex flex-col  justify-center items-center h-screen w-full p-3 md:p-10">
         {/* content section start */}
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <div className="card lg:card-side shadow-xl bg-zinc-100 relative">
             {/* back button start */}
             <Link to="/" className="absolute top-5 right-5">
@@ -56,7 +55,7 @@ const UpdateProfile = () => {
                   Update Profile
                 </h1>
                 <form  onSubmit={handleSubmit(onSubmit)}>
-                  {/* email section start */}
+                  {/* name section start */}
                   <div className="form-control">
                     <label className="label">
                     {errors.name ? <span className="text-sm text-red-600">please provide correct Name</span> : <span className="label-text">Name</span>}
@@ -68,8 +67,8 @@ const UpdateProfile = () => {
                       {...register("name", { required: true })}
                     />
                   </div>
-                  {/* email section end */}
-                  {/* password section start */}
+                  {/* name section end */}
+                  {/* photo section start */}
                   <div className="form-control">
                     <label className="label">
                     {errors.photo ? <span className="text-sm text-red-600">please provide correct image link</span> : <span className="label-text">Photo</span>}
@@ -80,8 +79,9 @@ const UpdateProfile = () => {
                       className="input input-bordered"
                       {...register("photo", { required: true })}
                     />
+                    {/* <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" {...register("photo", { required: true })}/> */}
                   </div>
-                  {/* password section end */}
+                  {/* photo section end */}
                   {/* submit btn start */}
                   <div className="form-control mt-4">
                     <button type="submit" className="btn bg-orange-600 text-white hover:bg-black shadow-xl">
