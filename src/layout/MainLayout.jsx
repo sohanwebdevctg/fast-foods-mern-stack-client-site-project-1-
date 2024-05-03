@@ -12,7 +12,6 @@ const MainLayout = () => {
   const {user, loading} = useContext(AuthContext)
   
   return (
-
     <div className="bg-zinc-100">
       {
         user && loading ? <Loading></Loading> : <div>
