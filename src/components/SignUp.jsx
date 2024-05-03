@@ -77,7 +77,7 @@ const SignUp = () => {
                 </h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   {/* name section start */}
-                  <div className="form-control">
+                  {/* <div className="form-control">
                     <label className="label">
                     {errors.name ? <span className="text-sm text-red-600">please provide correct name</span> : <span className="label-text">Name</span>}
                     </label>
@@ -88,7 +88,7 @@ const SignUp = () => {
                       {...register("name", { required: true })}
                     />
                     
-                  </div>
+                  </div> */}
                   {/* name section end */}
                   {/* email section start */}
                   <div className="form-control">

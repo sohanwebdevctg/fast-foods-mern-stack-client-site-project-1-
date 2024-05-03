@@ -1,10 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Google = () => {
   //authProvider
   const { googleLogIn } = useContext(AuthContext);
+
+
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
 
   //googleBtn
   const googleBtn = () => {
@@ -12,6 +19,7 @@ const Google = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
