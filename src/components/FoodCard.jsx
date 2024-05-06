@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
 import { AuthContext } from './../context/AuthProvider';
+import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
 const FoodCard = ({data}) => {
@@ -17,6 +18,27 @@ const FoodCard = ({data}) => {
 
       //get user carts details
       const addCarts = {menuId: data._id, category: data.category, name: data.name, price: data.price, quantity : 1, image: data.image, email: user?.email}
+
+      //add the data
+      fetch('http://localhost:5000/userCarts',{
+        method: 'POST',
+        headers: { 'content-type' : 'application/json'},
+        body: JSON.stringify(addCarts)
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        //success message
+        if(data.insertedId){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your data has been added",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+
       
     }
 
