@@ -2,7 +2,7 @@ import React from 'react';
 import { FaAngleRight } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-const userDataBanner = () => {
+const UserDataBanner = () => {
   return (
     <div className='pt-10 userDataBanner'>
       {/* userDataBanner section start */}
@@ -40,4 +40,4 @@ const userDataBanner = () => {
   );
 };
 
-export default userDataBanner;
+export default UserDataBanner;
