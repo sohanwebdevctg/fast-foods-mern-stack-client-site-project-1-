@@ -21,7 +21,7 @@ const Menu = () => {
   useEffect(() => {
     const loadingFun = async () => {
       try {
-        const response = await fetch("menu.json");
+        const response = await fetch("http://localhost:5000/allFastFoods");
         const data = await response.json();
         setMenu(data);
       } catch (error) {

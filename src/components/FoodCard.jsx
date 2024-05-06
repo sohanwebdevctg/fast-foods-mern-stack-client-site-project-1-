@@ -1,9 +1,26 @@
+import { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
+import { AuthContext } from './../context/AuthProvider';
 
 // eslint-disable-next-line react/prop-types
 const FoodCard = ({data}) => {
 
-  console.log(data)
+  //authProvider
+  const {user} = useContext(AuthContext)
+
+  
+  // userCartsFoods
+  const addCartsFoods = (data) => {
+
+    //check use then add the data in cart
+    if(user && user?.email){
+
+      //get user carts details
+      const addCarts = {menuId: data._id, category: data.category, name: data.name, price: data.price, quantity : 1, image: data.image, email: user?.email}
+      
+    }
+
+  }
 
   return (
     <div className="m-2 md:m-1 lg:m-2 shadow-lg rounded-lg flex flex-col items-center justify-center">
@@ -39,7 +56,7 @@ const FoodCard = ({data}) => {
           <p className="text-sm sm:text-base md:text-xs lg:text-base xl:text-base">{data.recipe}</p>
           <div className="flex justify-between items-center">
             <button className="bg-orange-600 p-2 rounded-full text-white text-xs sm:text-sm md:text-xs lg:text-base xl:text-lg"><FaHeart></FaHeart></button>
-            <button className="px-2 py-1 sm:px-2 sm:py-1 md:px-1 md:py-1 lg:px-3 lg:py-2 xl:px-3 xl:py-2 rounded-md bg-orange-600 text-white text-xs sm:text-sm md:text-xs lg:text-sm xl:text-sm font-bold inline-block text-right">Add to Card</button>
+            <button className="px-2 py-1 sm:px-2 sm:py-1 md:px-1 md:py-1 lg:px-3 lg:py-2 xl:px-3 xl:py-2 rounded-md bg-orange-600 text-white text-xs sm:text-sm md:text-xs lg:text-sm xl:text-sm font-bold inline-block text-right" onClick={() => {addCartsFoods(data)}}>Add to Card</button>
           </div>
         </div>
       </div>
