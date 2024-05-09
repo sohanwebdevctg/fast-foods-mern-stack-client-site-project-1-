@@ -2,10 +2,15 @@ import Swal from "sweetalert2";
 import useCarts from "../../hooks/useCarts";
 import UserDataBanner from "./UserDataBanner";
 import { MdDelete } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const UserData = () => {
   //userCarts data
   const [carts] = useCarts();
+  //authContest
+  const {user} = useContext(AuthContext)
+  console.log(user)
 
   //deleteFun
   const deleteFun = (data) => {
@@ -33,7 +38,6 @@ const UserData = () => {
         });
           }
         })
-
       }
     });
   }
@@ -45,8 +49,8 @@ const UserData = () => {
       {/* userDataBanner section end */}
       {/* userCarts data section start */}
       {/* table section start */}
-      <div className="my-12 shadow-xl">
-        <table className="table">
+      <div className="my-12  grid grid-cols-3 gap-5">
+        <table className="table shadow-xl col-span-2">
           {/* head */}
           <thead className="bg-orange-600 text-gray-200">
             <tr className="text-center">
@@ -89,6 +93,21 @@ const UserData = () => {
             {/* row */}
           </tbody>
         </table>
+        <div className="col-span-1">
+          <div className=" bg-slate-100 shadow-xl p-5 rounded-lg space-y-1">
+            <h1 className="xl:text-xl font-bold">Customer Details</h1>
+            <ul>
+              <li className="xl:text-sm"><span className="font-bold">Name: </span>{user.displayName}</li>
+              <li className="xl:text-sm"><span className="font-bold">Email: </span>{user.email}</li>
+              <li className="xl:text-sm"><span className="font-bold">User_Id: </span>{user.uid}</li>
+            </ul>
+            <h1 className="xl:text-xl font-bold">Shopping Details</h1>
+            <ul>
+              <li className="xl:text-sm"><span className="font-bold">Total Items:</span> {carts.length}</li>
+              <li className="xl:text-sm"><span className="font-bold">Total Price:</span>$0.00</li>
+            </ul>
+          </div>
+        </div>
       </div>
       {/* table section end */}
       {/* userCarts data section end */}
