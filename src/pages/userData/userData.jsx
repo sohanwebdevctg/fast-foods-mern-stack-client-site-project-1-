@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useCarts from "../../hooks/useCarts";
 import UserDataBanner from "./UserDataBanner";
 import { MdDelete } from "react-icons/md";
@@ -5,7 +6,37 @@ import { MdDelete } from "react-icons/md";
 const UserData = () => {
   //userCarts data
   const [carts] = useCarts();
-  console.log(carts);
+
+  //deleteFun
+  const deleteFun = (data) => {
+    // delete toasw
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/userCarts/${data._id}`,{
+          method: 'DELETE'
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if(data.deletedCount){
+          Swal.fire({
+          title: "Deleted!",
+          text: "Your data has been deleted",
+          icon: "success"
+        });
+          }
+        })
+
+      }
+    });
+  }
 
   return (
     <div className="display">
@@ -51,7 +82,7 @@ const UserData = () => {
               <td>{data.quantity}</td>
               <td>${data.price}</td>
               <th>
-                <MdDelete className="text-3xl bg-red-600 text-white text-center mx-auto p-1 rounded-md"></MdDelete>
+                <MdDelete onClick={() => deleteFun(data)} className="text-3xl bg-red-600 text-white text-center mx-auto p-1 rounded-md"></MdDelete>
               </th>
             </tr>)
             }
