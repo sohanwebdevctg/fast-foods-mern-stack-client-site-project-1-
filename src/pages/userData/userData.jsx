@@ -4,13 +4,14 @@ import UserDataBanner from "./UserDataBanner";
 import { MdDelete } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import { FaPlus, FaMinus } from "react-icons/fa";
+
 
 const UserData = () => {
   //userCarts data
   const [carts] = useCarts();
   //authContest
   const {user} = useContext(AuthContext)
-  console.log(user)
 
   //deleteFun
   const deleteFun = (data) => {
@@ -40,6 +41,31 @@ const UserData = () => {
         })
       }
     });
+  }
+
+  //incrementQuantity function
+  const incrementQuantity = (data) => {
+    console.log(data)
+    // fetch quantity data
+    fetch(`http://localhost:5000/userCarts/${data._id}`,{
+      method: 'PUT',
+      headers: {'content-type' : 'application/json'},
+      body: JSON.stringify({quantity: data.quantity + 1})
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+    })
+  }
+
+  // decrementQuantity function
+  const decrementQuantity = (data) => {
+    console.log(data)
+    // if(data.quantity > 1){
+    
+    // }else{
+    //   alert('sorry')
+    // }
   }
 
   return (
@@ -77,13 +103,22 @@ const UserData = () => {
                       />
                     </div>
                   </div>
-
               </td>
               <td>
                 <span>Name: {data.name}</span><br></br>
                 <span>Category: {data.category}</span>
               </td>
-              <td>{data.quantity}</td>
+              <td className="flex items-center gap-2">
+                {/* increment quantity start */}
+                <FaPlus onClick={() => incrementQuantity(data)} className="text-base bg-orange-600 text-white p-1 rounded-md"></FaPlus>
+                {/* increment quantity end */}
+                {/* quantity start */}
+                <p className="xl:text-xl">{data.quantity}</p>
+                {/* quantity end */}
+                {/* decrement quantity start */}
+                <FaMinus onClick={() => decrementQuantity(data)} className="text-base bg-orange-600 text-white p-1 rounded-md"></FaMinus>
+                {/* decrement quantity end */}
+              </td>
               <td>${data.price}</td>
               <th>
                 <MdDelete onClick={() => deleteFun(data)} className="text-3xl bg-red-600 text-white text-center mx-auto p-1 rounded-md"></MdDelete>
