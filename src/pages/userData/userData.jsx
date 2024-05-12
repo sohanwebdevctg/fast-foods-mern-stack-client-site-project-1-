@@ -106,6 +106,12 @@ const UserData = () => {
     return (data.price * data.quantity)
   }
 
+
+  //totalPrice
+  const totalPrice = carts.reduce((total, data) =>{
+    return total + calculatePrice(data)
+  },0)
+
   return (
     <div className="display">
       {/* userDataBanner section start */}
@@ -157,7 +163,7 @@ const UserData = () => {
                 <FaMinus onClick={() => decrementQuantity(data)} className="text-base bg-orange-600 text-white p-1 rounded-md"></FaMinus>
                 {/* decrement quantity end */}
               </td>
-              <td>${calculatePrice(data)}</td>
+              <td>${calculatePrice(data).toFixed(2)}</td>
               <th>
                 <MdDelete onClick={() => deleteFun(data)} className="text-3xl bg-red-600 text-white text-center mx-auto p-1 rounded-md"></MdDelete>
               </th>
@@ -177,7 +183,7 @@ const UserData = () => {
             <h1 className="xl:text-xl font-bold">Shopping Details</h1>
             <ul>
               <li className="xl:text-sm"><span className="font-bold">Total Items:</span> {carts.length}</li>
-              <li className="xl:text-sm"><span className="font-bold">Total Price:</span>$0.00</li>
+              <li className="xl:text-sm"><span className="font-bold">Total Price:</span> ${totalPrice.toFixed(2)}</li>
             </ul>
           </div>
         </div>
