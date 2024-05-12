@@ -31,6 +31,7 @@ const UserData = () => {
         })
         .then((res) => res.json())
         .then((data) => {
+          refetch()
           if(data.deletedCount){
           Swal.fire({
           title: "Deleted!",
@@ -91,12 +92,18 @@ const UserData = () => {
       }
     })
     }else{
+      // sweet alert
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Sorry, Your quantity is too low",
       });
     }
+  }
+
+  // calculate the price and quantity
+  const calculatePrice = (data) => {
+    return (data.price * data.quantity)
   }
 
   return (
@@ -150,7 +157,7 @@ const UserData = () => {
                 <FaMinus onClick={() => decrementQuantity(data)} className="text-base bg-orange-600 text-white p-1 rounded-md"></FaMinus>
                 {/* decrement quantity end */}
               </td>
-              <td>${data.price}</td>
+              <td>${calculatePrice(data)}</td>
               <th>
                 <MdDelete onClick={() => deleteFun(data)} className="text-3xl bg-red-600 text-white text-center mx-auto p-1 rounded-md"></MdDelete>
               </th>
