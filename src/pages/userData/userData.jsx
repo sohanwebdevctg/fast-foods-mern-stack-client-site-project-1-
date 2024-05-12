@@ -9,7 +9,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 
 const UserData = () => {
   //userCarts data
-  const [carts] = useCarts();
+  const [carts, refetch] = useCarts();
   //authContest
   const {user} = useContext(AuthContext)
 
@@ -45,7 +45,6 @@ const UserData = () => {
 
   //incrementQuantity function
   const incrementQuantity = (data) => {
-    console.log(data)
     // fetch quantity data
     fetch(`http://localhost:5000/userCarts/${data._id}`,{
       method: 'PUT',
@@ -54,18 +53,50 @@ const UserData = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      if(data.modifiedCount > 0){
+        refetch()
+        // sweet alert
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Increase your quantity",
+          showConfirmButton: false,
+          timer: 1000
+        });
+      }
     })
   }
 
   // decrementQuantity function
   const decrementQuantity = (data) => {
-    console.log(data)
-    // if(data.quantity > 1){
-    
-    // }else{
-    //   alert('sorry')
-    // }
+    if(data.quantity > 1){
+    // fetch quantity data
+    fetch(`http://localhost:5000/userCarts/${data._id}`,{
+      method: 'PUT',
+      headers: {'content-type' : 'application/json'},
+      body: JSON.stringify({quantity: data.quantity - 1})
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if(data.modifiedCount > 0){
+        refetch()
+        // sweet alert
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Decrease your quantity",
+          showConfirmButton: false,
+          timer: 1000
+        });
+      }
+    })
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Sorry, Your quantity is too low",
+      });
+    }
   }
 
   return (
