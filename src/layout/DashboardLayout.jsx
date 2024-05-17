@@ -1,7 +1,11 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import useCarts from "../hooks/useCarts";
 
 const DashboardLayout = () => {
+  //carts item show
+  const [carts] = useCarts();
+
   return (
     <div>
       {/* dashboardLayout content section start */}
@@ -35,8 +39,8 @@ const DashboardLayout = () => {
             <li>
               <Link to="/">Payment History</Link>
             </li>
-            <li>
-              <Link to="carts">My Carts</Link>
+            <li className="flex gap-2">
+              <Link to="carts">My Carts <div className="badge badge-success">+{carts.length || 0}</div></Link>
             </li>
           </ul>
         </div>

@@ -172,14 +172,14 @@ const MyCarts = () => {
           <div className=" bg-slate-100 shadow-xl p-5 rounded-lg space-y-1">
             <h1 className="xl:text-xl font-bold">Customer Details</h1>
             <ul>
-              <li className="xl:text-sm"><span className="font-bold">Name: </span>{user.displayName}</li>
-              <li className="xl:text-sm"><span className="font-bold">Email: </span>{user.email}</li>
-              <li className="xl:text-sm"><span className="font-bold">User_Id: </span>{user.uid}</li>
+              <li className="xl:text-sm"><span className="font-bold">Name: </span>{user?.displayName}</li>
+              <li className="xl:text-sm"><span className="font-bold">Email: </span>{user?.email}</li>
+              <li className="xl:text-sm"><span className="font-bold">User_Id: </span>{user?.uid}</li>
             </ul>
             <h1 className="xl:text-xl font-bold">Shopping Details</h1>
             <ul>
-              <li className="xl:text-sm"><span className="font-bold">Total Items:</span> {carts.length}</li>
-              <li className="xl:text-sm"><span className="font-bold">Total Price:</span> ${totalPrice.toFixed(2)}</li>
+              <li className="xl:text-sm"><span className="font-bold">Total Items:</span> {carts?.length}</li>
+              <li className="xl:text-sm"><span className="font-bold">Total Price:</span> ${totalPrice?.toFixed(2)}</li>
             </ul>
           </div>
         </div>
