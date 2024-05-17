@@ -2,12 +2,17 @@ import { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
 import { AuthContext } from './../context/AuthProvider';
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const FoodCard = ({data}) => {
 
   //authProvider
   const {user} = useContext(AuthContext)
+
+  // location and navigation
+  const location = useLocation();
+  const navigate = useNavigate();
 
   
   // userCartsFoods
@@ -20,7 +25,7 @@ const FoodCard = ({data}) => {
       const addCarts = {menuId: data._id, category: data.category, name: data.name, price: data.price, quantity : 1, image: data.image, email: user?.email}
 
       //add the data
-      fetch('http://localhost:5000/userCarts',{
+      fetch('http://localhost:5000/carts',{
         method: 'POST',
         headers: { 'content-type' : 'application/json'},
         body: JSON.stringify(addCarts)
@@ -40,6 +45,21 @@ const FoodCard = ({data}) => {
       })
 
       
+    }
+    else{
+      Swal.fire({
+        title: "Your are not Authenticated user",
+        text: "Do you want to login?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Go to LogIn"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login', {state: {from : location}})
+        }
+      });
     }
 
   }

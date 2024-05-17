@@ -9,7 +9,6 @@ const Profile = ({user}) => {
   const {logOut} = useContext(AuthContext);
 
   //location
-  const location = useLocation()
   const navigate = useNavigate()
 
   //logout Btn
