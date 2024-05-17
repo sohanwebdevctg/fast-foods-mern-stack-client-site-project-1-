@@ -16,10 +16,6 @@ const SignUp = () => {
   const {register,handleSubmit,formState: { errors }} = useForm()
 
   let navigate = useNavigate();
-  let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
-
-
 
   const onSubmit = (data) => {
     // user data
@@ -30,8 +26,8 @@ const SignUp = () => {
     .then((result) => {
       const user = result.user;
       if(user){
+        navigate('/login');
         alert('success signUp')
-        navigate(from, { replace: true });
       }
     })
     .catch((error) => {

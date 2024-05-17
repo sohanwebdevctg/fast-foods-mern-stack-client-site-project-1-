@@ -21,7 +21,7 @@ const PrivateRoute = ({children}) => {
 
   //user
   if(user){
-    return children
+    return children;
   }
 
   //navigate to location

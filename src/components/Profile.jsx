@@ -39,9 +39,7 @@ const Profile = ({user}) => {
         </div>
       </div>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li><Link to="/updateProfile">Profile</Link></li>
-        <li><Link to="/">Order</Link></li>
-        <li><Link to="/">Settings</Link></li>
+        <li><Link to="/">Dashboard</Link></li>
         <li><button onClick={logOutBtn}>LogOut</button></li>
       </ul>
     </div>
