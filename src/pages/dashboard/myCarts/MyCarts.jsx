@@ -1,13 +1,12 @@
 import Swal from "sweetalert2";
-import useCarts from "../../hooks/useCarts";
-import UserDataBanner from "./UserDataBanner";
+import useCarts from "../../../hooks/useCarts";
 import { MdDelete } from "react-icons/md";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 
-const UserData = () => {
+const MyCarts = () => {
   //userCarts data
   const [carts, refetch] = useCarts();
   //authContest
@@ -26,7 +25,7 @@ const UserData = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/userCarts/${data._id}`,{
+        fetch(`http://localhost:5000/carts/${data._id}`,{
           method: 'DELETE'
         })
         .then((res) => res.json())
@@ -47,7 +46,7 @@ const UserData = () => {
   //incrementQuantity function
   const incrementQuantity = (data) => {
     // fetch quantity data
-    fetch(`http://localhost:5000/userCarts/${data._id}`,{
+    fetch(`http://localhost:5000/carts/${data._id}`,{
       method: 'PUT',
       headers: {'content-type' : 'application/json'},
       body: JSON.stringify({quantity: data.quantity + 1})
@@ -72,7 +71,7 @@ const UserData = () => {
   const decrementQuantity = (data) => {
     if(data.quantity > 1){
     // fetch quantity data
-    fetch(`http://localhost:5000/userCarts/${data._id}`,{
+    fetch(`http://localhost:5000/carts/${data._id}`,{
       method: 'PUT',
       headers: {'content-type' : 'application/json'},
       body: JSON.stringify({quantity: data.quantity - 1})
@@ -114,9 +113,6 @@ const UserData = () => {
 
   return (
     <div className="display">
-      {/* userDataBanner section start */}
-      <UserDataBanner></UserDataBanner>
-      {/* userDataBanner section end */}
       {/* userCarts data section start */}
       {/* table section start */}
       <div className="my-12  grid grid-cols-3 gap-5">
@@ -194,4 +190,4 @@ const UserData = () => {
   );
 };
 
-export default UserData;
+export default MyCarts;

@@ -8,8 +8,10 @@ import Menu from "../pages/menu/Menu";
 import LogIn from "../components/LogIn";
 import SignUp from "../components/SignUp";
 import UpdateProfile from "../components/UpdateProfile";
-import UserData from "../pages/userData/UserData";
+import UserData from "../pages/dashboard/myCarts/MyCarts";
 import PrivateRoute from './../privateRoute/PrivateRoute';
+import DashboardLayout from "../layout/DashboardLayout";
+import MyCarts from "../pages/dashboard/myCarts/MyCarts";
 
 
 //router
@@ -30,10 +32,6 @@ export const router = createBrowserRouter([
         path: '/updateProfile',
         element: <UpdateProfile></UpdateProfile>
       },
-      {
-        path: '/userData',
-        element: <PrivateRoute><UserData></UserData></PrivateRoute>
-      },
     ]
   },
   {
@@ -43,5 +41,15 @@ export const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp></SignUp>
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+      {
+        path : 'carts',
+        element: <MyCarts></MyCarts>
+      }
+    ]
   }
 ]);

@@ -12,7 +12,7 @@ const useCarts = () => {
   const { data: carts = [], refetch } = useQuery({
     queryKey: ['carts', user?.email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/userCarts?email=${user?.email}`)
+      const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
       return res.json()
     },
   })
