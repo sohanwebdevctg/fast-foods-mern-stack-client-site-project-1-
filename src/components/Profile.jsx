@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Profile = ({user}) => {
@@ -15,14 +16,15 @@ const Profile = ({user}) => {
   const logOutBtn = () => {
     logOut()
     .then(() => {
-      alert('success logOut')
       navigate('/');
-    }).catch((error) => {
-      const errorMessage = error.message;
-      if(errorMessage){
-        alert(errorMessage)
-      }
-    });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You are now logged out",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
     
   }
 

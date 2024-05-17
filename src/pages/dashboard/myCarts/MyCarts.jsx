@@ -172,7 +172,7 @@ const MyCarts = () => {
           <div className=" bg-slate-100 shadow-xl p-5 rounded-lg space-y-1">
             <h1 className="xl:text-xl font-bold">Customer Details</h1>
             <ul>
-              <li className="xl:text-sm"><span className="font-bold">Name: </span>{user?.displayName}</li>
+              <li className="xl:text-sm"><span className="font-bold">Name: </span>{user?.displayName || "None Person"}</li>
               <li className="xl:text-sm"><span className="font-bold">Email: </span>{user?.email}</li>
               <li className="xl:text-sm"><span className="font-bold">User_Id: </span>{user?.uid}</li>
             </ul>

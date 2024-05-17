@@ -1,10 +1,34 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useCarts from "../hooks/useCarts";
+import { AuthContext } from "../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const DashboardLayout = () => {
   //carts item show
   const [carts] = useCarts();
+
+  //authProvider
+  const {logOut} = useContext(AuthContext);
+
+  //location
+  const navigate = useNavigate()
+
+  //logout Btn
+  const logOutBtn = () => {
+    logOut()
+    .then(() => {
+      navigate('/');
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You are now logged out",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    
+  }
 
   return (
     <div>
@@ -30,6 +54,7 @@ const DashboardLayout = () => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
+            {/* user section start */}
             <li>
               <Link to="/">User Home</Link>
             </li>
@@ -40,8 +65,31 @@ const DashboardLayout = () => {
               <Link to="/">Payment History</Link>
             </li>
             <li className="flex gap-2">
-              <Link to="carts">My Carts <div className="badge badge-success">+{carts.length || 0}</div></Link>
+              <Link to="carts">
+                My Carts{" "}
+                <div className="badge badge-success">+{carts.length || 0}</div>
+              </Link>
             </li>
+            {/* user section end */}
+            {/* divider section start */}
+            <li>
+              <div className="divider"></div>
+            </li>
+            {/* divider section start */}
+            {/* front section start */}
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/menu">Menu</Link>
+            </li>
+            {/* front section start */}
+            {/* divider section start */}
+            <li>
+              <div className="divider"></div>
+            </li>
+            {/* divider section start */}
+            <li><button onClick={logOutBtn}>LogOut</button></li>
           </ul>
         </div>
       </div>
