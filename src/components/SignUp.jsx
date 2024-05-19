@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import Google from "./Google";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
   //authProvider
-  const { signUp } = useContext(AuthContext);
+  const { signUp, updateUserProfile } = useContext(AuthContext);
 
   //react hook form
   const {register,handleSubmit,formState: { errors }} = useForm()
@@ -19,16 +20,43 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     // user data
+    const name = data.name;
     const email = data.email;
+    const photo = data.photo;
     const password = data.password;
+
+    //create user
+    const userData = {name : name, email: email}
 
     signUp(email, password)
     .then((result) => {
       const user = result.user;
-      if(user){
+      //update user profile
+      updateUserProfile(name, photo)
+      .then(() => {
+        //create user data in server
+        fetch('http://localhost:5000/users',{
+          method: 'POST',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify(userData)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+        })
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your are logged in now",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate('/login');
-        alert('success signUp')
-      }
+      }).catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage)
+    });
+
     })
     .catch((error) => {
       const errorMessage = error.message;
@@ -73,7 +101,7 @@ const SignUp = () => {
                 </h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   {/* name section start */}
-                  {/* <div className="form-control">
+                  <div className="form-control">
                     <label className="label">
                     {errors.name ? <span className="text-sm text-red-600">please provide correct name</span> : <span className="label-text">Name</span>}
                     </label>
@@ -83,8 +111,7 @@ const SignUp = () => {
                       className="input input-bordered"
                       {...register("name", { required: true })}
                     />
-                    
-                  </div> */}
+                  </div>
                   {/* name section end */}
                   {/* email section start */}
                   <div className="form-control">
@@ -99,6 +126,19 @@ const SignUp = () => {
                     />
                   </div>
                   {/* email section end */}
+                  {/* photo section start */}
+                  <div className="form-control">
+                    <label className="label">
+                    {errors.photo ? <span className="text-sm text-red-600">please provide your photo</span> : <span className="label-text">Photo</span>}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your photo url"
+                      className="input input-bordered"
+                      {...register("photo", { required: true })}
+                    />
+                  </div>
+                  {/* photo section end */}
                   {/* password section start */}
                   <div className="form-control">
                     <label className="label">
