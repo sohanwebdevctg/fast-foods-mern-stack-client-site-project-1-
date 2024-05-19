@@ -11,6 +11,9 @@ const DashboardLayout = () => {
   //authProvider
   const {logOut} = useContext(AuthContext);
 
+  //admin rol
+  const admin = true;
+
   //location
   const navigate = useNavigate()
 
@@ -54,7 +57,27 @@ const DashboardLayout = () => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            {/* user section start */}
+            {
+              admin === true ? <>
+              {/* admin section start */}
+            <li>
+              <Link to="/">Admin Home</Link>
+            </li>
+            <li>
+              <Link to="/">Add Items</Link>
+            </li>
+            <li>
+              <Link to="/">Manage Booking</Link>
+            </li>
+            <li>
+              <Link to="/">Manage Items</Link>
+            </li>
+            <li>
+              <Link to="users">All Users</Link>
+            </li>
+            {/* admin section end */}
+              </> : <>
+              {/* user section start */}
             <li>
               <Link to="/">User Home</Link>
             </li>
@@ -71,6 +94,10 @@ const DashboardLayout = () => {
               </Link>
             </li>
             {/* user section end */}
+              </>
+            }
+            
+            
             {/* divider section start */}
             <li>
               <div className="divider"></div>

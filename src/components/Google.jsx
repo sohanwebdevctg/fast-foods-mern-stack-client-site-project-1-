@@ -7,19 +7,28 @@ const Google = () => {
   //authProvider
   const { googleLogIn } = useContext(AuthContext);
 
-
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
-
 
   //googleBtn
   const googleBtn = () => {
     googleLogIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        //create user
+      const userData = {name : user.displayName, email: user.email}
+       //create user data in server
+      fetch('http://localhost:5000/users',{
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(userData)
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
         navigate(from, { replace: true });
+      })
       })
       .catch((error) => {
         const errorMessage = error.message;
