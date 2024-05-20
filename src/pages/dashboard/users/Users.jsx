@@ -3,15 +3,23 @@ import React from 'react';
 import { MdDelete } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Users = () => {
 
+  // token
+  const token = localStorage.getItem('access_token')
+
   //user fetch in database
   const { data : users = [], refetch } = useQuery({
-    queryKey: ['todos'],
+    queryKey: ['users'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
-      return res.json()
+      const res = await axios.get('http://localhost:5000/users',{
+        headers: {
+          authorization : `Bearer ${token}`
+        }
+      })
+      return res.data
     },
   })
 

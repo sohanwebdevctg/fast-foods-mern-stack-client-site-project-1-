@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import MenuBanner from "./MenuBanner";
 import FoodCard from "./../../components/FoodCard";
+import useMenu from "../../hooks/useMenu";
 
 const Menu = () => {
   //menu data
-  const [menu, setMenu] = useState([]);
+  const [menu] = useMenu();
+
   // filter data
   const [filter, setFilter] = useState([]);
+  
   // button data
   const [buttonData, setButtonData] = useState([]);
 
@@ -16,20 +19,6 @@ const Menu = () => {
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPosts = filter.slice(firstPostIndex, lastPostIndex);
-
-  //loading menu data
-  useEffect(() => {
-    const loadingFun = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/allFastFoods");
-        const data = await response.json();
-        setMenu(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    loadingFun();
-  }, []);
 
   // filter function button
   const filterData = (value) => {

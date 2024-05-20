@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import useCarts from "../hooks/useCarts";
 import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../hooks/useAdmin";
 
 const DashboardLayout = () => {
   //carts item show
@@ -12,7 +13,7 @@ const DashboardLayout = () => {
   const {logOut} = useContext(AuthContext);
 
   //admin rol
-  const admin = true;
+  const [isAdmin] = useAdmin();
 
   //location
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             {
-              admin === true ? <>
+              isAdmin === true ? <>
               {/* admin section start */}
             <li>
               <Link to="/">Admin Home</Link>
