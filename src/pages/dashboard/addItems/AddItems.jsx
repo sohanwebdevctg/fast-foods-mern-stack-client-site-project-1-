@@ -1,23 +1,69 @@
 import { useForm } from "react-hook-form";
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 
 
 const AddItems = () => {
 
   // react hook form
-  const {
-    register,
-    handleSubmit,
-    watch,
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  //axios secure
+  const [axiosSecure] = useAxiosSecure();
+
+  const onSubmit = (data) => {
+
+    //get form data
+    const name = data.name;
+    const price = data.price;
+    const category = data.category;
+    const recipe = data.recipe;
+    
+    //get image
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append('image', image)
+
+    //get imageBB link
+    const imageBB_link = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGEBB}`
+
+
+    //fetch imageBB
+    fetch(imageBB_link,{
+      method: 'POST',
+      body: formData
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      //get image url
+      const imageUrl = data.data.display_url;
+
+      //post item in data base
+      axiosSecure.post('/allFastFoods',{
+        name: name, price: price, category: category, image: imageUrl, recipe: recipe
+      })
+      .then((data) => {
+        if(data.data.insertedId){
+          // success swal
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+    })
+
+  }
 
   return (
     <div className="w-2/3">
       {/* content section start */}
       <div className="w-full">
         {/* form section start */}
-        <div className="card shrink-0 w-full shadow-2xl bg-base-100">
+        <div className="card shrink-0 w-full shadow-2xl bg-slate-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             {/* name & price section start */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -84,7 +130,7 @@ const AddItems = () => {
             </div>
             {/* recipe section end */}
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Add Item</button>
+              <button className="btn bg-orange-600 hover:bg-orange-600 text-white">Add Item</button>
             </div>
           </form>
         </div>

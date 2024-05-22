@@ -9,7 +9,7 @@ const useMenu = () => {
   const {loading} = useContext(AuthContext)
 
   // fetch menu data
-  const { data : menu = [] } = useQuery({
+  const { data : menu = [], refetch } = useQuery({
     queryKey: ['menu'],
     enabled: !loading,
     queryFn: async () => {
@@ -18,7 +18,7 @@ const useMenu = () => {
     },
   })
 
-  return [menu]
+  return [menu, refetch]
 };
 
 export default useMenu;

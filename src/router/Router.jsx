@@ -15,6 +15,7 @@ import MyCarts from "../pages/dashboard/myCarts/MyCarts";
 import Users from "../pages/dashboard/users/Users";
 import AdminRoute from './../privateRoute/AdminRoute';
 import AddItems from "../pages/dashboard/addItems/AddItems";
+import ManageBookings from "../pages/dashboard/manageBookings/ManageBookings";
 
 
 //router
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path : 'addItems',
         element: <AdminRoute><AddItems></AddItems></AdminRoute>
+      },
+      {
+        path : 'manageBookings',
+        element: <AdminRoute><ManageBookings></ManageBookings></AdminRoute>
       },
       {
         path : 'users',
