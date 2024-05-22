@@ -1,8 +1,33 @@
 import useMenu from "../../../hooks/useMenu";
+import { FaRegEdit, FaTrash } from "react-icons/fa";
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
+
 
 const ManageBookings = () => {
   // get menu data
-  const [menu] = useMenu();
+  const [menu, refetch] = useMenu();
+
+  const [axiosSecure] = useAxiosSecure()
+
+
+  //delete data
+  const deleteData = (data) => {
+    axiosSecure.delete(`/allFastFoods/${data._id}`)
+    .then((data) => {
+      if(data.data.deletedCount > 0){
+        refetch()
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your data has been deleted",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    })
+  }
+
 
   return (
     <div className="w-2/3">
@@ -38,10 +63,14 @@ const ManageBookings = () => {
                 <td>{data.name}</td>
                 <td>${data.price}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <button >
+                    <FaRegEdit className="bg-green-600 text-white xl:text-2xl p-[3px] rounded-md"></FaRegEdit>
+                  </button>
                 </td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                <button onClick={() => deleteData(data)} >
+                    <FaTrash className="bg-red-600 text-white xl:text-2xl p-[3px] rounded-md"></FaTrash>
+                  </button>
                 </td>
               </tr>))
             }
