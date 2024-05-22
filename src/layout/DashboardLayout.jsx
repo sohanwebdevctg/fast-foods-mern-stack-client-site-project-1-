@@ -31,7 +31,6 @@ const DashboardLayout = () => {
         timer: 1500
       });
     })
-    
   }
 
   return (

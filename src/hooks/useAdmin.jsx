@@ -1,4 +1,3 @@
-import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from './../context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
@@ -19,11 +18,9 @@ const useAdmin = () => {
       const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`,{
         headers: { authorization : `Bearer ${token}`}
       })
-
       return res.data.admin
     },
   })
-
   return [isAdmin, isAdminLoading]
 };
 
