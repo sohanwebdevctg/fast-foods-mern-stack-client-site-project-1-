@@ -64,7 +64,7 @@ const DashboardLayout = () => {
               <Link to="/">Admin Home</Link>
             </li>
             <li>
-              <Link to="/">Add Items</Link>
+              <Link to="addItems">Add Items</Link>
             </li>
             <li>
               <Link to="/">Manage Booking</Link>
